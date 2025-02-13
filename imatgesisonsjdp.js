@@ -9,11 +9,11 @@
         if (!confirm("Anam a la quinta forca?")) {
             document.body.style.backgroundImage = "url('fondo1.png')";
         }
+        Amagarimg();
         }
-
         function Comprovar() {
             lletra = document.getElementById("lletra").value;
-            document.getElementById("lletra").value = "a";
+            document.getElementById("lletra").value = "z";
             lletra = lletra.toLowerCase();
             switch(lletra) {
                 case "á":
@@ -41,27 +41,42 @@
                 window.alert("Has encertat!");
                 Paraula = Paraula + lletra + " ";
                 document.getElementById("Paraula").innerHTML = Paraula;
+                document.getElementById("disfraz3").hidden = true;
+                document.getElementById("disfraz2").hidden = true;
+                document.getElementById("disfraz1").hidden = false;
             } else{
                 window.alert("Has fallat!");
                 error = error + lletra + " ";
                 document.getElementById("error").innerHTML = error;
-                Vides = Vides - 1;   
-                Mostrarimg ();        
+                Vides = Vides - 1;  
+                Mostrarimg ();       
             }
             document.getElementById("Vides").innerHTML = 
             "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + Vides;
             if (Vides <= 0) {
                 window.alert("i has perdut!");
                 document.body.style.backgroundImage = "url('Jungle.png')";
-
+                document.getElementById("disfraz1").hidden = true;
+                document.getElementById("cat-fight").play();
+                document.getElementById("rotar").hidden = false;
+                document.getElementById("bell_toll_x3").play();
                 AturaTot();
             } else {
                 if (Paraula.length >= 14) {
                     window.alert("i has guanyat!");
                     document.body.style.backgroundImage = "url('Party.png')";
                     AturaTot();
+                    document.getElementById("ahorcado").hidden = false;
+                    document.getElementById("ahorcado_0").hidden = true;
+                    document.getElementById("cheer").play();
+                }else{
+                    document.getElementById("clock_ticking").play();
+                    
                 }
             }
+        }
+        function sonidocamp(){
+            document.getElementById("bell_toll_x3")
         }
         function AturaTot() {
             document.getElementById("lletra").disabled = true;
@@ -84,6 +99,7 @@
             document.getElementById("caminar").hidden = true;
             document.getElementById("rotar").hidden = true;
         }
+
         function Mostrarimg(){
             switch (Vides){
                 case 6:
