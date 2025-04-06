@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/ClientSide/html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Joc Del Penjat</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <script>
+        var Paraula = ""; 
+        var error ="";
+        var Vides = 7;
+        function Comprovar() {
+            lletra = document.getElementById("lletra").value;
+            document.getElementById("lletra").value = "";
+            lletra = lletra.toLowerCase();
+            switch(lletra) {
+                case "á":
+                case "à":
+                    lletra = "a";
+                    break;
+                case "é":
+                case "è":
+                    lletra = "e";
+                    break;
+                case "ó":
+                case "ò":
+                    lletra = "o";
+                    break
+                case "ï":
+                case "í":
+                    lletra = "i";
+                    break
+                case "ú":
+                case "ü":
+                    lletra = "o";
+                    break;  
+            }
+            if ((lletra >= "a") && (lletra <= "m") || (lletra === "ç")) {
+                window.alert("Has encertat!");
+                Paraula = Paraula + lletra + " ";
+                document.getElementById("Paraula").innerHTML = Paraula;
+            } else {
+                window.alert("Has fallat!");
+                error = error + lletra + " ";
+                document.getElementById("error").innerHTML = error;
+                Vides = Vides - 1;            
+            }
+            document.getElementById("Vides").innerHTML = 
+            "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" + Vides;
+            if (Vides <= 0) {
+                window.alert("i has perdut!");
+                AturaTot();
+            } else {
+                if (Paraula.length >= 14) {
+                    window.alert("i has guanyat!");
+                    AturaTot();
+                }
+            }
+        }
+        function AturaTot() {
+            document.getElementById("lletra").disabled = true;
+            document.getElementById("Comprovar").disabled = true;
+        }
+    </script>
+    </head>
+    <body>
+        <h1>Prototip Joc del Penjat</h1>
+            <input id="lletra" type="text" 
+                   placeholder="Escriu una lletra minúscula" maxlength="1"> 
+            <button id="Comprovar" onclick="Comprovar();">Comprovar</button>
+        <h2>Paraula</h2>
+            <div id="Paraula">_ _ _ _ _ _ _</div>
+        <h2>Vides</h2>
+            <div id="Vides">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;_</div>
+        <h2>Lletres</h2>
+            <div id="error">_ _ _ _ _ _ _</div>
+        <br>
+        <p><strong>Crèdits: 
+            <a href="https://prosselloe.wordpress.com/?p=5862" target="_blank">El joc del penjat on Scratch</a>
+        </strong></p>
+    </body>
+</html>
